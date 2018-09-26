@@ -52,7 +52,7 @@ apt-get install libdb4.8-dev libdb4.8++-dev -y
 echo '*** Done 3/10 ***'
 echo '*** Step 4/10 - Cloning and Compiling BitSend Wallet ***'
 cd
-git clone --branch v0.14 --depth 1 https://github.com/LIMXTEC/BitSend 
+git clone --branch master https://github.com/LIMXTEC/BitSend 
 cd BitSend
 ./autogen.sh
 ./configure --disable-dependency-tracking --enable-tests=no --without-gui

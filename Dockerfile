@@ -11,13 +11,14 @@
 FROM ubuntu:16.04
 
 LABEL maintainer="Jon D. (dArkjON), David B. (dalijolijo)"
-LABEL version="0.2"
+LABEL version=" 0.14.2.0"
 
 # Make ports available to the world outside this container
 # DefaultPort = 8886
 # RPCPort = 8800
 # TorPort = 9051
-EXPOSE 8800 8886 9051
+# DEPRECATED: Use 'docker run -p 8800:8800 -p 8886:8886 -p 9051:9051 ...'
+#EXPOSE 8800 8886 9051
 
 USER root
 
@@ -74,7 +75,7 @@ RUN echo '*** Running updates and installing required packages ***' && \
 RUN echo '*** Cloning and Compiling BitSend Wallet ***' && \
     cd && \
     echo "Execute a git clone of LIMXTEC/BitSend. Please wait..." && \
-    git clone --branch v0.14 --depth 1 https://github.com/LIMXTEC/BitSend && \
+    git clone --branch master https://github.com/LIMXTEC/BitSend && \
     cd BitSend && \
     ./autogen.sh && \
     ./configure --disable-dependency-tracking --enable-tests=no --without-gui && \
@@ -95,11 +96,6 @@ RUN echo '*** Cloning and Compiling BitSend Wallet ***' && \
 RUN echo '*** Copy Supervisor Configuration and bitsend.conf ***'
 COPY *.sv.conf /etc/supervisor/conf.d/
 COPY bitsend.conf /tmp
-
-#
-# Logging outside docker container
-#
-VOLUME /var/log
 
 #
 # Copy start script

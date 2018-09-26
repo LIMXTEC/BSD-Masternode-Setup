@@ -3,9 +3,9 @@ set -u
 
 GIT_REPO="LIMXTEC"
 GIT_PROJECT="BSD-Masternode-Setup"
-DOCKER_REPO="limxtec"
+DOCKER_REPO="limxtec" #only lowercase
 IMAGE_NAME="bsd-masternode"
-IMAGE_TAG="0.14.1.0" #BSD Version 0.14.1.0
+IMAGE_TAG="0.14.2.0" #BSD Version 0.14.2.0
 CONFIG="/home/bitsend/.bitsend/bitsend.conf"
 CONTAINER_NAME="bsd-masternode"
 DEFAULT_PORT="8886"
